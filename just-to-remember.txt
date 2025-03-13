@@ -1,0 +1,7 @@
+creating a virtual enviroment for pip:
+python -m venv [name of enviroment]
+
+acessing it:
+python [name of enviroment]/bin/activate
+
+

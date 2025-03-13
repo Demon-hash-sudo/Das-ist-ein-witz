@@ -34,7 +34,7 @@ class DebugHandler(SimpleHTTPRequestHandler):
         logger.info(f"{self.address_string()} - {format%args}")
 
 # Niedrigere Ports testen
-PORTS = [8080, 8000]
+PORTS = [50000, 8080, 8000]
 
 for port in PORTS:
     try:
