@@ -5,3 +5,5 @@ acessing it:
 python [name of enviroment]/bin/activate
 
 
+to download on the receiving device:
+sudo pacman -S xdotool
