@@ -1,6 +1,7 @@
 import soco
 import logging
 import socket
+import time
 
 # Logging-Setup
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -20,6 +21,11 @@ def send_url_to_tv(tv, url):
     try:
         tv.play_uri(url)
         logger.info(f"URL {url} successfully sent to TV")
+        # Wait for a few seconds to ensure the image is loaded
+        time.sleep(5)
+        # Pause the TV to "freeze" the image
+        tv.pause()
+        logger.info("TV paused to freeze the image")
     except Exception as e:
         logger.error(f"Failed to send URL to TV: {e}")
 
@@ -41,11 +47,11 @@ def send_command_to_computer(computer_identifier, command):
         logger.error(f"Failed to send command to {computer_identifier}: {e}")
 
 if __name__ == "__main__":
-    device_identifier = 'Ok - tv'  # This can be either the device name or IP address
+    device_identifier = '192.168.0.71'  # This can be either the device name or IP address
     device = find_tv_by_name_or_ip(device_identifier)
     if device:
         logger.info(f"Found device: {device.player_name} with IP: {device.ip_address}")
-        url = 'http://example.com'
+        url = 'http://192.168.0.61:50000/Folie1.PNG'
         send_url_to_tv(device, url)
     else:
         logger.error(f"No device found with identifier {device_identifier}")
