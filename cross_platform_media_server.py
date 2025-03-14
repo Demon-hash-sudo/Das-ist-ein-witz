@@ -53,7 +53,7 @@ class DebugHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, **kwargs)
     
     def end_headers(self):
-        # Add CORS headers
+        # Add CORS headers 
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
